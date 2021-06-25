@@ -1,0 +1,6 @@
+module Pods_JXRequest {
+  umbrella header "Pods-JXRequest-umbrella.h"
+
+  export *
+  module * { export * }
+}
