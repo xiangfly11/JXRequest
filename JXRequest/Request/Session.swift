@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import Alamofire
+
+class Session {
+    public static let shared = Session.init()
+    
+    
+}

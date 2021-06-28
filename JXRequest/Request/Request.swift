@@ -13,7 +13,7 @@ public protocol Request {
     
     var headers: [String: String] { get }
     
-    var baseUrlStr: String { get }
+    var baseUrlStr: URL { get }
     
     var path: String { get }
     
@@ -29,6 +29,14 @@ public protocol Request {
 
 
 public extension Request {
+    var baseUrlString: URL {
+        guard let urlStr = Enviroment.test.baseUrl else {
+            return URL.init(string: "")!
+        }
+        return urlStr
+    }
+    
+    
     var parameters: [String: Any]? {
         return nil
     }

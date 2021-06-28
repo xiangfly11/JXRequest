@@ -9,4 +9,6 @@ import Foundation
 
 protocol BaseRequest: Request {
     
+    
+    
 }

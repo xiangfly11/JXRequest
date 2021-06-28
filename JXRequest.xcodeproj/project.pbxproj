@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68CDF27A895C1213412FA315 /* libPods-JXRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BA2D4673B506B85C4ADAC0 /* libPods-JXRequest.a */; };
+		7A106C5B2689AC44000A6BDB /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A106C5A2689AC44000A6BDB /* Enviroment.swift */; };
 		7A56F650268483F3005164D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F64F268483F3005164D9 /* AppDelegate.swift */; };
 		7A56F652268483F3005164D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F651268483F3005164D9 /* SceneDelegate.swift */; };
 		7A56F654268483F3005164D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F653268483F3005164D9 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A106C5A2689AC44000A6BDB /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
 		7A56F64C268483F3005164D9 /* JXRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A56F64F268483F3005164D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A56F651268483F3005164D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				7A56F68226848A8A005164D9 /* HttpMethod.swift */,
 				7A56F68426848E38005164D9 /* BaseRequest.swift */,
 				7A56F6882685D16B005164D9 /* Session.swift */,
+				7A106C5A2689AC44000A6BDB /* Enviroment.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			files = (
 				7A56F6892685D16B005164D9 /* Session.swift in Sources */,
 				7A56F654268483F3005164D9 /* ViewController.swift in Sources */,
+				7A106C5B2689AC44000A6BDB /* Enviroment.swift in Sources */,
 				7A56F681268484B8005164D9 /* Request.swift in Sources */,
 				7A56F68526848E38005164D9 /* BaseRequest.swift in Sources */,
 				7A56F68326848A8A005164D9 /* HttpMethod.swift in Sources */,
