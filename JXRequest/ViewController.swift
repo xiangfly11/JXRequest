@@ -15,7 +15,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         Session.shared.send(request: TestAPI.getInfo) { (result: Result<TestAPIResultA, Error>) in
-            
+            switch result {
+            case .success(let data):
+                print(data.a)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
 }
