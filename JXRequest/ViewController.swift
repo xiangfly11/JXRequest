@@ -7,8 +7,10 @@
 
 import UIKit
 import Alamofire
+import RxSwift
 
 class ViewController: UIViewController {
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,12 @@ class ViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+        
+        Session.shared.send(request: TestAPI.getDetail(page: 7)).subscribe(onNext: { (result: TestAPIResultB) in
+            print(result.b)
+        }, onError: { error in
+            print(error.localizedDescription)
+        }).disposed(by: disposeBag)
     }
 }
 
