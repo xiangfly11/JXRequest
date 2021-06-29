@@ -9,11 +9,11 @@ import Foundation
 
 public protocol Request {
     
-    associatedtype Response
+    var response: Codable { get }
     
     var headers: [String: String] { get }
     
-    var baseUrlStr: URL { get }
+    var baseUrl: URL { get }
     
     var path: String { get }
     
@@ -24,18 +24,23 @@ public protocol Request {
     var token: String? { get }
     
     var code: Int? { get }
+    
+    var timeoutInterval: TimeInterval { get }
 
 }
 
 
 public extension Request {
-    var baseUrlString: URL {
+    var baseUrl: URL {
         guard let urlStr = Enviroment.test.baseUrl else {
             return URL.init(string: "")!
         }
         return urlStr
     }
     
+    var response: Codable? {
+        return nil
+    }
     
     var parameters: [String: Any]? {
         return nil
@@ -51,5 +56,9 @@ public extension Request {
     
     var code: Int? {
         return nil
+    }
+    
+    var timeoutInterval: TimeInterval {
+        return 6
     }
 }

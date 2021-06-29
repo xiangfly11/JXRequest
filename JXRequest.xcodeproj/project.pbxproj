@@ -19,9 +19,12 @@
 		7A56F672268483FC005164D9 /* JXRequestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F671268483FC005164D9 /* JXRequestUITests.swift */; };
 		7A56F681268484B8005164D9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F680268484B8005164D9 /* Request.swift */; };
 		7A56F68326848A8A005164D9 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F68226848A8A005164D9 /* HttpMethod.swift */; };
-		7A56F68526848E38005164D9 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F68426848E38005164D9 /* BaseRequest.swift */; };
 		7A56F68726857EFF005164D9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7A56F68626857EFF005164D9 /* Podfile */; };
 		7A56F6892685D16B005164D9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F6882685D16B005164D9 /* Session.swift */; };
+		7A80C10B268B0B15007F80E0 /* URLConvertibleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C10A268B0B15007F80E0 /* URLConvertibleBuilder.swift */; };
+		7A80C10D268B17A7007F80E0 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C10C268B17A7007F80E0 /* SessionProtocol.swift */; };
+		7A80C10F268B1BE4007F80E0 /* TestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C10E268B1BE4007F80E0 /* TestAPI.swift */; };
+		7A80C111268B3D51007F80E0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C110268B3D51007F80E0 /* Response.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,9 +62,12 @@
 		7A56F673268483FC005164D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A56F680268484B8005164D9 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		7A56F68226848A8A005164D9 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
-		7A56F68426848E38005164D9 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		7A56F68626857EFF005164D9 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		7A56F6882685D16B005164D9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		7A80C10A268B0B15007F80E0 /* URLConvertibleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConvertibleBuilder.swift; sourceTree = "<group>"; };
+		7A80C10C268B17A7007F80E0 /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
+		7A80C10E268B1BE4007F80E0 /* TestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPI.swift; sourceTree = "<group>"; };
+		7A80C110268B3D51007F80E0 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		89BA2D4673B506B85C4ADAC0 /* libPods-JXRequest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JXRequest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A342437FC7EF68ADDF4DB23B /* Pods-JXRequest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXRequest.release.xcconfig"; path = "Target Support Files/Pods-JXRequest/Pods-JXRequest.release.xcconfig"; sourceTree = "<group>"; };
 		E0599DC854932E2BD20B8A0F /* Pods-JXRequest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXRequest.debug.xcconfig"; path = "Target Support Files/Pods-JXRequest/Pods-JXRequest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,9 +169,12 @@
 			children = (
 				7A56F680268484B8005164D9 /* Request.swift */,
 				7A56F68226848A8A005164D9 /* HttpMethod.swift */,
-				7A56F68426848E38005164D9 /* BaseRequest.swift */,
 				7A56F6882685D16B005164D9 /* Session.swift */,
 				7A106C5A2689AC44000A6BDB /* Enviroment.swift */,
+				7A80C10A268B0B15007F80E0 /* URLConvertibleBuilder.swift */,
+				7A80C10C268B17A7007F80E0 /* SessionProtocol.swift */,
+				7A80C10E268B1BE4007F80E0 /* TestAPI.swift */,
+				7A80C110268B3D51007F80E0 /* Response.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -337,12 +346,15 @@
 			files = (
 				7A56F6892685D16B005164D9 /* Session.swift in Sources */,
 				7A56F654268483F3005164D9 /* ViewController.swift in Sources */,
+				7A80C10D268B17A7007F80E0 /* SessionProtocol.swift in Sources */,
 				7A106C5B2689AC44000A6BDB /* Enviroment.swift in Sources */,
 				7A56F681268484B8005164D9 /* Request.swift in Sources */,
-				7A56F68526848E38005164D9 /* BaseRequest.swift in Sources */,
 				7A56F68326848A8A005164D9 /* HttpMethod.swift in Sources */,
 				7A56F650268483F3005164D9 /* AppDelegate.swift in Sources */,
+				7A80C111268B3D51007F80E0 /* Response.swift in Sources */,
 				7A56F652268483F3005164D9 /* SceneDelegate.swift in Sources */,
+				7A80C10F268B1BE4007F80E0 /* TestAPI.swift in Sources */,
+				7A80C10B268B0B15007F80E0 /* URLConvertibleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
