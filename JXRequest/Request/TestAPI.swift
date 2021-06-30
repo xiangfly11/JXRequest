@@ -41,7 +41,7 @@ extension TestAPI {
         }
     }
     
-    var response: Codable {
+    var response: Decodable {
         switch self {
         case .getInfo:
             return TestAPIResultA.init()
@@ -51,10 +51,10 @@ extension TestAPI {
     }
 }
 
-struct TestAPIResultA: Codable {
+struct TestAPIResultA: Response {
     var a = ""
 }
 
-struct TestAPIResultB: Codable {
+struct TestAPIResultB: Response {
     var b = ""
 }

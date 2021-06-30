@@ -30,6 +30,11 @@ class ViewController: UIViewController {
         }, onError: { error in
             print(error.localizedDescription)
         }).disposed(by: disposeBag)
+        
+        guard let r = TestAPI.getDetail(page: 8).response as? TestAPIResultB else {
+            return
+        }
+        print(r.message)
     }
 }
 

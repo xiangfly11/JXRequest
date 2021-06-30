@@ -9,7 +9,7 @@ import Foundation
 
 public protocol Request {
     
-    var response: Codable { get }
+    var response: Decodable { get }
     
     var headers: [String: String] { get }
     
@@ -38,7 +38,7 @@ public extension Request {
         return urlStr
     }
     
-    var response: Codable? {
+    var response: Decodable? {
         return nil
     }
     

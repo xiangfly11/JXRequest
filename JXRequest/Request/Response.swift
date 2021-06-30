@@ -7,7 +7,17 @@
 
 import Foundation
 
-public struct Response: Codable {
-    var message: String = ""
-    var code: Int = 0
+protocol Response: Decodable {
+    var message: String { get }
+    var code: Int { get }
+}
+
+extension Response {
+    var message: String {
+        return ""
+    }
+    
+    var code: Int {
+        return 0
+    }
 }
