@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TestAPI: Request {
+enum TestAPI: JXRequest {
     case getInfo
     case getDetail(page: Int)
 }
@@ -23,12 +23,12 @@ extension TestAPI {
         }
     }
     
-    var method: HttpMethod {
+    var method: JXHTTPMethod {
         switch self {
         case .getInfo:
-            return HttpMethod.get
+            return JXHTTPMethod.get
         case .getDetail:
-            return HttpMethod.get
+            return JXHTTPMethod.get
         }
     }
     
@@ -51,10 +51,10 @@ extension TestAPI {
     }
 }
 
-struct TestAPIResultA: Response {
+struct TestAPIResultA: JXResponse {
     var a = ""
 }
 
-struct TestAPIResultB: Response {
+struct TestAPIResultB: JXResponse {
     var b = ""
 }

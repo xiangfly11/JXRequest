@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol Request {
+public protocol JXRequest {
     
     var response: Decodable { get }
     
@@ -19,7 +19,7 @@ public protocol Request {
     
     var parameters: [String: Any]? { get }
     
-    var method: HttpMethod { get }
+    var method: JXHTTPMethod { get }
     
     var token: String? { get }
     
@@ -30,9 +30,9 @@ public protocol Request {
 }
 
 
-public extension Request {
+public extension JXRequest {
     var baseUrl: URL {
-        guard let urlStr = Enviroment.test.baseUrl else {
+        guard let urlStr = JXEnviroment.test.baseUrl else {
             return URL.init(string: "")!
         }
         return urlStr

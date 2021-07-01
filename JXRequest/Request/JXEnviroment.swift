@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum Enviroment {
+enum JXEnviroment {
     case test
     case pubTest
     case publish
 }
 
-extension Enviroment {
+extension JXEnviroment {
     var baseUrl: URL? {
         switch self {
         case .test:

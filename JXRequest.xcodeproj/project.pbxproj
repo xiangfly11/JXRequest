@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68CDF27A895C1213412FA315 /* libPods-JXRequest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BA2D4673B506B85C4ADAC0 /* libPods-JXRequest.a */; };
-		7A106C5B2689AC44000A6BDB /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A106C5A2689AC44000A6BDB /* Enviroment.swift */; };
+		7A106C5B2689AC44000A6BDB /* JXEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A106C5A2689AC44000A6BDB /* JXEnviroment.swift */; };
 		7A56F650268483F3005164D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F64F268483F3005164D9 /* AppDelegate.swift */; };
 		7A56F652268483F3005164D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F651268483F3005164D9 /* SceneDelegate.swift */; };
 		7A56F654268483F3005164D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F653268483F3005164D9 /* ViewController.swift */; };
@@ -17,14 +17,15 @@
 		7A56F65C268483FB005164D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A56F65A268483FB005164D9 /* LaunchScreen.storyboard */; };
 		7A56F667268483FC005164D9 /* JXRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F666268483FC005164D9 /* JXRequestTests.swift */; };
 		7A56F672268483FC005164D9 /* JXRequestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F671268483FC005164D9 /* JXRequestUITests.swift */; };
-		7A56F681268484B8005164D9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F680268484B8005164D9 /* Request.swift */; };
-		7A56F68326848A8A005164D9 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F68226848A8A005164D9 /* HttpMethod.swift */; };
+		7A56F681268484B8005164D9 /* JXRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F680268484B8005164D9 /* JXRequest.swift */; };
+		7A56F68326848A8A005164D9 /* JXHTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F68226848A8A005164D9 /* JXHTTPMethod.swift */; };
 		7A56F68726857EFF005164D9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 7A56F68626857EFF005164D9 /* Podfile */; };
-		7A56F6892685D16B005164D9 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F6882685D16B005164D9 /* Session.swift */; };
-		7A80C10B268B0B15007F80E0 /* URLConvertibleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C10A268B0B15007F80E0 /* URLConvertibleBuilder.swift */; };
-		7A80C10D268B17A7007F80E0 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C10C268B17A7007F80E0 /* SessionProtocol.swift */; };
+		7A56F6892685D16B005164D9 /* JXSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56F6882685D16B005164D9 /* JXSession.swift */; };
+		7A80C10B268B0B15007F80E0 /* JXURLConvertibleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C10A268B0B15007F80E0 /* JXURLConvertibleBuilder.swift */; };
+		7A80C10D268B17A7007F80E0 /* JXSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C10C268B17A7007F80E0 /* JXSessionProtocol.swift */; };
 		7A80C10F268B1BE4007F80E0 /* TestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C10E268B1BE4007F80E0 /* TestAPI.swift */; };
-		7A80C111268B3D51007F80E0 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C110268B3D51007F80E0 /* Response.swift */; };
+		7A80C111268B3D51007F80E0 /* JXResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C110268B3D51007F80E0 /* JXResponse.swift */; };
+		7A80C113268D65B6007F80E0 /* JXRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A80C112268D65B6007F80E0 /* JXRequestError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7A106C5A2689AC44000A6BDB /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
+		7A106C5A2689AC44000A6BDB /* JXEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXEnviroment.swift; sourceTree = "<group>"; };
 		7A56F64C268483F3005164D9 /* JXRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JXRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A56F64F268483F3005164D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A56F651268483F3005164D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,14 +61,15 @@
 		7A56F66D268483FC005164D9 /* JXRequestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JXRequestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A56F671268483FC005164D9 /* JXRequestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXRequestUITests.swift; sourceTree = "<group>"; };
 		7A56F673268483FC005164D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A56F680268484B8005164D9 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		7A56F68226848A8A005164D9 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		7A56F680268484B8005164D9 /* JXRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXRequest.swift; sourceTree = "<group>"; };
+		7A56F68226848A8A005164D9 /* JXHTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXHTTPMethod.swift; sourceTree = "<group>"; };
 		7A56F68626857EFF005164D9 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		7A56F6882685D16B005164D9 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		7A80C10A268B0B15007F80E0 /* URLConvertibleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConvertibleBuilder.swift; sourceTree = "<group>"; };
-		7A80C10C268B17A7007F80E0 /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
+		7A56F6882685D16B005164D9 /* JXSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXSession.swift; sourceTree = "<group>"; };
+		7A80C10A268B0B15007F80E0 /* JXURLConvertibleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXURLConvertibleBuilder.swift; sourceTree = "<group>"; };
+		7A80C10C268B17A7007F80E0 /* JXSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXSessionProtocol.swift; sourceTree = "<group>"; };
 		7A80C10E268B1BE4007F80E0 /* TestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPI.swift; sourceTree = "<group>"; };
-		7A80C110268B3D51007F80E0 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		7A80C110268B3D51007F80E0 /* JXResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXResponse.swift; sourceTree = "<group>"; };
+		7A80C112268D65B6007F80E0 /* JXRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXRequestError.swift; sourceTree = "<group>"; };
 		89BA2D4673B506B85C4ADAC0 /* libPods-JXRequest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JXRequest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A342437FC7EF68ADDF4DB23B /* Pods-JXRequest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXRequest.release.xcconfig"; path = "Target Support Files/Pods-JXRequest/Pods-JXRequest.release.xcconfig"; sourceTree = "<group>"; };
 		E0599DC854932E2BD20B8A0F /* Pods-JXRequest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JXRequest.debug.xcconfig"; path = "Target Support Files/Pods-JXRequest/Pods-JXRequest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,14 +169,15 @@
 		7A56F67F2684840D005164D9 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				7A56F680268484B8005164D9 /* Request.swift */,
-				7A56F68226848A8A005164D9 /* HttpMethod.swift */,
-				7A56F6882685D16B005164D9 /* Session.swift */,
-				7A106C5A2689AC44000A6BDB /* Enviroment.swift */,
-				7A80C10A268B0B15007F80E0 /* URLConvertibleBuilder.swift */,
-				7A80C10C268B17A7007F80E0 /* SessionProtocol.swift */,
+				7A56F680268484B8005164D9 /* JXRequest.swift */,
+				7A56F68226848A8A005164D9 /* JXHTTPMethod.swift */,
+				7A56F6882685D16B005164D9 /* JXSession.swift */,
+				7A106C5A2689AC44000A6BDB /* JXEnviroment.swift */,
+				7A80C10A268B0B15007F80E0 /* JXURLConvertibleBuilder.swift */,
+				7A80C10C268B17A7007F80E0 /* JXSessionProtocol.swift */,
 				7A80C10E268B1BE4007F80E0 /* TestAPI.swift */,
-				7A80C110268B3D51007F80E0 /* Response.swift */,
+				7A80C110268B3D51007F80E0 /* JXResponse.swift */,
+				7A80C112268D65B6007F80E0 /* JXRequestError.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -344,17 +347,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A56F6892685D16B005164D9 /* Session.swift in Sources */,
+				7A56F6892685D16B005164D9 /* JXSession.swift in Sources */,
 				7A56F654268483F3005164D9 /* ViewController.swift in Sources */,
-				7A80C10D268B17A7007F80E0 /* SessionProtocol.swift in Sources */,
-				7A106C5B2689AC44000A6BDB /* Enviroment.swift in Sources */,
-				7A56F681268484B8005164D9 /* Request.swift in Sources */,
-				7A56F68326848A8A005164D9 /* HttpMethod.swift in Sources */,
+				7A80C10D268B17A7007F80E0 /* JXSessionProtocol.swift in Sources */,
+				7A106C5B2689AC44000A6BDB /* JXEnviroment.swift in Sources */,
+				7A56F681268484B8005164D9 /* JXRequest.swift in Sources */,
+				7A56F68326848A8A005164D9 /* JXHTTPMethod.swift in Sources */,
 				7A56F650268483F3005164D9 /* AppDelegate.swift in Sources */,
-				7A80C111268B3D51007F80E0 /* Response.swift in Sources */,
+				7A80C111268B3D51007F80E0 /* JXResponse.swift in Sources */,
+				7A80C113268D65B6007F80E0 /* JXRequestError.swift in Sources */,
 				7A56F652268483F3005164D9 /* SceneDelegate.swift in Sources */,
 				7A80C10F268B1BE4007F80E0 /* TestAPI.swift in Sources */,
-				7A80C10B268B0B15007F80E0 /* URLConvertibleBuilder.swift in Sources */,
+				7A80C10B268B0B15007F80E0 /* JXURLConvertibleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

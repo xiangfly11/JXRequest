@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum HttpMethod: String {
+public enum JXHTTPMethod: String {
     case get = "GET"
     case post = "POST"
 }

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        Session.shared.send(request: TestAPI.getInfo) { (result: Result<TestAPIResultA, Error>) in
+        JXSession.shared.send(request: TestAPI.getInfo) { (result: Result<TestAPIResultA, Error>) in
             switch result {
             case .success(let data):
                 print(data.a)
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
             }
         }
         
-        Session.shared.send(request: TestAPI.getDetail(page: 7)).subscribe(onNext: { (result: TestAPIResultB) in
+        JXSession.shared.send(request: TestAPI.getDetail(page: 7)).subscribe(onNext: { (result: TestAPIResultB) in
             print(result.b)
         }, onError: { error in
             print(error.localizedDescription)

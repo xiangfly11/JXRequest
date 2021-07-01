@@ -7,12 +7,12 @@
 
 import Foundation
 
-protocol Response: Decodable {
+protocol JXResponse: Decodable {
     var message: String { get }
     var code: Int { get }
 }
 
-extension Response {
+extension JXResponse {
     var message: String {
         return ""
     }

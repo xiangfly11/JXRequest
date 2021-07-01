@@ -8,9 +8,9 @@
 import Foundation
 import Alamofire
 
-struct URLConvertibleBuilder: URLRequestConvertible {
+struct JXURLConvertibleBuilder: URLRequestConvertible {
     
-    fileprivate var request: Request
+    fileprivate var request: JXRequest
     
     fileprivate var requestURL: URL {
         return request.baseUrl.appendingPathComponent(request.path)
@@ -36,11 +36,14 @@ struct URLConvertibleBuilder: URLRequestConvertible {
         }
     }
     
-    init(request: Request) {
+    init(request: JXRequest) {
         self.request = request
     }
     
     func asURLRequest() throws -> URLRequest {
+        guard let _ = URLComponents(url: requestURL, resolvingAgainstBaseURL: true) else {
+            throw JXRequestError.invalidBaseURL(requestURL)
+        }
         return try encoding.encode(urlRequest, with: request.parameters)
     }
 }
