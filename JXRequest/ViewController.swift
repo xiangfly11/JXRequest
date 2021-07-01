@@ -16,15 +16,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        JXSession.shared.send(request: TestAPI.getInfo) { (result: Result<TestAPIResultA, Error>) in
-            switch result {
-            case .success(let data):
-                print(data.a)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
         JXSession.shared.send(request: TestAPI.getDetail(page: 7)).subscribe(onNext: { (result: TestAPIResultB) in
             print(result.b)
         }, onError: { error in
@@ -34,7 +25,9 @@ class ViewController: UIViewController {
         guard let r = TestAPI.getDetail(page: 8).response as? TestAPIResultB else {
             return
         }
+        
         print(r.message)
+        
     }
 }
 
