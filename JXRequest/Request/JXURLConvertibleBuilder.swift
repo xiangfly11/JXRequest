@@ -10,13 +10,13 @@ import Alamofire
 
 struct JXURLConvertibleBuilder: URLRequestConvertible {
     
-    fileprivate var request: JXRequest
+    private var request: JXRequest
     
-    fileprivate var requestURL: URL {
+    private var requestURL: URL {
         return request.baseUrl.appendingPathComponent(request.path)
     }
     
-    fileprivate var urlRequest: URLRequest {
+    private var urlRequest: URLRequest {
         var urlRequest = URLRequest.init(url: requestURL)
         urlRequest.method = HTTPMethod.init(rawValue: request.method.rawValue)
         urlRequest.timeoutInterval = request.timeoutInterval
@@ -27,7 +27,7 @@ struct JXURLConvertibleBuilder: URLRequestConvertible {
         return urlRequest
     }
     
-    fileprivate var encoding: ParameterEncoding {
+    private var encoding: ParameterEncoding {
         switch request.method {
         case .get:
             return URLEncoding.default
