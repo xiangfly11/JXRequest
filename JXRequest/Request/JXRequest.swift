@@ -30,6 +30,8 @@ public protocol JXRequest {
     var apiKey: String? { get }
     
     var deviceKey: String? { get }
+    
+    var hashValue: Int { get }
 }
 
 
@@ -72,4 +74,15 @@ public extension JXRequest {
     var deviceKey: String? {
          return nil
     }
+    
+    var hashValue: Int {
+        var hashValue = 0
+        parameters?.forEach({ (key, value) in
+            hashValue = hashValue + key.hashValue
+        })
+        hashValue = hashValue + baseUrl.absoluteString.hashValue
+        hashValue = hashValue + path.hashValue
+        return hashValue
+    }
+    
 }
