@@ -26,7 +26,10 @@ public protocol JXRequest {
     var code: Int? { get }
     
     var timeoutInterval: TimeInterval { get }
-
+    
+    var apiKey: String? { get }
+    
+    var deviceKey: String? { get }
 }
 
 
@@ -60,5 +63,13 @@ public extension JXRequest {
     
     var timeoutInterval: TimeInterval {
         return 6
+    }
+    
+    var apiKey: String? {
+        return nil
+    }
+    
+    var deviceKey: String? {
+         return nil
     }
 }

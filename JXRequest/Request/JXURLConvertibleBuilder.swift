@@ -27,6 +27,30 @@ struct JXURLConvertibleBuilder: URLRequestConvertible {
         return urlRequest
     }
     
+    private var parameters: [String: Any] {
+        var parameters = [String: Any]()
+        if let requestParameters = request.parameters {
+            parameters = requestParameters
+        }
+        if let token = request.token, !token.isEmpty {
+            parameters["token"] = token
+        }
+        
+        if let code = request.code {
+            parameters["code"] = code
+        }
+        
+        if let apiKey = request.apiKey, !apiKey.isEmpty {
+            parameters["apiKey"] = apiKey
+        }
+        
+        if let deviceKey = request.deviceKey, !deviceKey.isEmpty {
+            parameters["deviceKey"] = deviceKey
+        }
+        
+        return parameters
+    }
+    
     private var encoding: ParameterEncoding {
         switch request.method {
         case .get:
@@ -44,6 +68,6 @@ struct JXURLConvertibleBuilder: URLRequestConvertible {
         guard let _ = URLComponents(url: requestURL, resolvingAgainstBaseURL: true) else {
             throw JXRequestError.invalidBaseURL(requestURL)
         }
-        return try encoding.encode(urlRequest, with: request.parameters)
+        return try encoding.encode(urlRequest, with: parameters)
     }
 }
