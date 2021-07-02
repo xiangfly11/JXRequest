@@ -19,6 +19,12 @@ class JXSession {
         return DispatchQueue(label: "com.jx.background", qos: .background)
     }
     
+    init() {
+        if JXEnviroment.shared.printLog {
+            
+        }
+    }
+    
     //MARK: Public Method
     public func send<T: Decodable>(request: JXRequest) -> Observable<T> {
         return Observable<T>.create {[weak self] (obsever) in
