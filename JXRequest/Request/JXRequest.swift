@@ -19,7 +19,7 @@ public protocol JXRequest {
     
     var parameters: [String: Any]? { get }
     
-    var method: JXHTTPMethod { get }
+    var method: JXRequestMethod { get }
     
     var token: String? { get }
     

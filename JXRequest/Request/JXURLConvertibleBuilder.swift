@@ -18,7 +18,12 @@ struct JXURLConvertibleBuilder: URLRequestConvertible {
     
     private var urlRequest: URLRequest {
         var urlRequest = URLRequest.init(url: requestURL)
-        urlRequest.method = HTTPMethod.init(rawValue: request.method.rawValue)
+        switch request.method {
+        case .send(let method):
+            urlRequest.method = HTTPMethod.init(rawValue: method.rawValue)
+        default:
+            break
+        }
         urlRequest.timeoutInterval = request.timeoutInterval
         request.headers.forEach {
             urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
@@ -53,10 +58,15 @@ struct JXURLConvertibleBuilder: URLRequestConvertible {
     
     private var encoding: ParameterEncoding {
         switch request.method {
-        case .get:
-            return URLEncoding.default
+        case .send(let method):
+            switch method {
+            case .get:
+                return URLEncoding.default
+            case .post:
+                return JSONEncoding.default
+            }
         default:
-            return JSONEncoding.default
+            return URLEncoding.default
         }
     }
     

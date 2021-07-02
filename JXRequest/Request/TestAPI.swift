@@ -23,12 +23,12 @@ extension TestAPI {
         }
     }
     
-    var method: JXHTTPMethod {
+    var method: JXRequestMethod {
         switch self {
         case .getInfo:
-            return JXHTTPMethod.get
+            return JXRequestMethod.send(.get)
         case .getDetail:
-            return JXHTTPMethod.get
+            return JXRequestMethod.send(.post)
         }
     }
     
