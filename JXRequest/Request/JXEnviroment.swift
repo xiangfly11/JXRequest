@@ -29,6 +29,10 @@ class JXEnviroment {
         }
     }
     
+    var allowCellure: Bool {
+        return true
+    }
+    
     var printLog: Bool {
         return true
     }

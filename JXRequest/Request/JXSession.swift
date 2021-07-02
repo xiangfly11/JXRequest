@@ -14,6 +14,19 @@ private var DataRequestKey = "com.jx.DataRequestKey"
 class JXSession {
     public static let shared = JXSession.init()
     
+    private var sessionConfiguration: URLSessionConfiguration {
+        let configuration = URLSessionConfiguration.af.default
+        configuration.allowsCellularAccess = JXEnviroment.shared.allowCellure
+        return configuration
+    }
+    
+    private var session: Session {
+        let eventMonitors = JXEnviroment.shared.printLog ? [JXLogger.init()] : []
+        let session = Session.init(configuration: sessionConfiguration,  requestQueue: callbackQueue, eventMonitors: eventMonitors)
+        
+        return session
+    }
+    
     private var dataRequests: [DataRequest] = [DataRequest]()
     private var callbackQueue: DispatchQueue {
         return DispatchQueue(label: "com.jx.background", qos: .background)
@@ -94,7 +107,7 @@ class JXSession {
 extension JXSession {
     //MARK: Private Method
     private func send<T: Decodable>(_ urlRequest: JXURLConvertibleBuilder, model: T, completion: @escaping(Result<T, Error>) -> Void) -> DataRequest {
-        let dataRequest = AF.request(urlRequest)
+        let dataRequest = session.request(urlRequest)
         let requestPublisher = dataRequest.publishDecodable(type: model as! T.Type)
         
         let _ = requestPublisher.subscribe(on: callbackQueue)

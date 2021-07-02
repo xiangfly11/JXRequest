@@ -64,7 +64,7 @@ public extension JXRequest {
     }
     
     var timeoutInterval: TimeInterval {
-        return 6
+        return 10
     }
     
     var apiKey: String? {
