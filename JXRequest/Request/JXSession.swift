@@ -27,7 +27,7 @@ class JXSession {
         return session
     }
     
-    private var dataRequests: [DataRequest] = [DataRequest]()
+    private var dataRequests: [Request] = [Request]()
     private var callbackQueue: DispatchQueue {
         return DispatchQueue(label: "com.jx.background", qos: .background)
     }
@@ -40,12 +40,12 @@ class JXSession {
     
     //MARK: Public Method
     public func send<T: Decodable>(request: JXRequest) -> Observable<T> {
+        let builder = JXURLConvertibleBuilder.init(request: request)
+        
         return Observable<T>.create {[weak self] (obsever) in
             guard let self = self else {
                 return Disposables.create()
             }
-            
-            let builder = JXURLConvertibleBuilder.init(request: request)
             let requestData = self.send(builder, model: request.response as! T) { (result: Result<T, Error>) in
                 switch result {
                 case .success(let data):
@@ -58,6 +58,21 @@ class JXSession {
             self.setDataRequestKey(request: request, dataRequest: requestData)
             return Disposables.create {
                 requestData.cancel()
+            }
+        }
+    }
+    
+    public func download(request: JXRequest) -> Observable<Progress> {
+        let builder = JXURLConvertibleBuilder.init(request: request)
+        return Observable<Progress>.create { [weak self] (observer) in
+            guard let self = self else {
+                return Disposables.create()
+            }
+            let downloadRequest = self.downlod(builder) { progress in
+                observer.onNext(progress)
+            }
+            return Disposables.create {
+                downloadRequest.cancel()
             }
         }
     }
@@ -123,6 +138,15 @@ extension JXSession {
         return dataRequest
     }
     
+    private func downlod(_ urlRequest: JXURLConvertibleBuilder, progressHandler: @escaping(Progress) -> Void) -> DownloadRequest {
+        let downloadRequest = session.download(urlRequest)
+        downloadRequest.downloadProgress { progress in
+            progressHandler(progress)
+        }
+        self.dataRequests.append(downloadRequest)
+        return downloadRequest
+    }
+    
     private func cancelAllRequests(completion: @escaping() -> Void) {
         AF.cancelAllRequests {[weak self] in
             guard let self = self else { return }
@@ -144,11 +168,11 @@ extension JXSession {
         }
     }
     
-    private func setDataRequestKey(request: JXRequest, dataRequest: DataRequest) {
+    private func setDataRequestKey(request: JXRequest, dataRequest: Request) {
         objc_setAssociatedObject(dataRequest, &DataRequestKey, request.hashValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
     
-    private func getDataRequestKey(dataRequest: DataRequest) -> Int {
+    private func getDataRequestKey(dataRequest: Request) -> Int {
         guard let key = objc_getAssociatedObject(dataRequest, &DataRequestKey) as? Int else {
             return 0
         }
