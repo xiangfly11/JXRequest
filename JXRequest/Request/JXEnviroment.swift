@@ -7,15 +7,19 @@
 
 import Foundation
 
-enum JXEnviroment {
+enum JXNetworkEnviroment {
     case test
     case pubTest
     case publish
 }
 
-extension JXEnviroment {
+class JXEnviroment {
+    static let shared: JXEnviroment = JXEnviroment.init()
+    var networkEnviroment: JXNetworkEnviroment {
+        return .test
+    }
     var baseUrl: URL? {
-        switch self {
+        switch networkEnviroment {
         case .test:
             return URL.init(string: "https://cover-api.fm-dev.thecover.cn")
         case .pubTest:
@@ -23,5 +27,9 @@ extension JXEnviroment {
         case .publish:
             return URL.init(string: "https://api.thecover.cn/")
         }
+    }
+    
+    var printLog: Bool {
+        return true
     }
 }

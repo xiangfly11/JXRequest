@@ -37,7 +37,7 @@ public protocol JXRequest {
 
 public extension JXRequest {
     var baseUrl: URL {
-        guard let urlStr = JXEnviroment.test.baseUrl else {
+        guard let urlStr = JXEnviroment.shared.baseUrl else {
             return URL.init(string: "")!
         }
         return urlStr
