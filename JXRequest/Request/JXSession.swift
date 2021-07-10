@@ -123,18 +123,13 @@ extension JXSession {
     //MARK: Private Method
     private func send<T: Decodable>(_ urlRequest: JXURLConvertibleBuilder, model: T, completion: @escaping(Result<T, Error>) -> Void) -> DataRequest {
         let dataRequest = session.request(urlRequest)
-        let requestPublisher = dataRequest.publishDecodable(type: model as! T.Type)
-        
-        let _ = requestPublisher.subscribe(on: callbackQueue)
-            .receive(on: RunLoop.main)
-            .sink { result in
-                if let value = result.value {
-                    completion(Result.success(value))
-                } else if let error = result.error {
-                    completion(Result.failure(error))
-                }
+        dataRequest.responseDecodable(of: T.self, queue: callbackQueue) { (result) in
+            if let value = result.value {
+                completion(Result.success(value))
+            } else if let error = result.error {
+                completion(Result.failure(error))
             }
-        self.dataRequests.append(dataRequest)
+        }
         return dataRequest
     }
     

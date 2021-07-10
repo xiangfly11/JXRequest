@@ -64,7 +64,7 @@
 		7A56F673268483FC005164D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A56F680268484B8005164D9 /* JXRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXRequest.swift; sourceTree = "<group>"; };
 		7A56F68226848A8A005164D9 /* JXHTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXHTTPMethod.swift; sourceTree = "<group>"; };
-		7A56F68626857EFF005164D9 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		7A56F68626857EFF005164D9 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7A56F6882685D16B005164D9 /* JXSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXSession.swift; sourceTree = "<group>"; };
 		7A80C10A268B0B15007F80E0 /* JXURLConvertibleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXURLConvertibleBuilder.swift; sourceTree = "<group>"; };
 		7A80C10E268B1BE4007F80E0 /* TestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAPI.swift; sourceTree = "<group>"; };
@@ -542,6 +542,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 679CMUJHT5;
 				INFOPLIST_FILE = JXRequest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -562,6 +563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 679CMUJHT5;
 				INFOPLIST_FILE = JXRequest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
