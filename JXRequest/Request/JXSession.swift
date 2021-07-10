@@ -37,8 +37,10 @@ class JXSession {
             
         }
     }
-    
-    //MARK: Public Method
+}
+
+//MARK: Public Method
+extension JXSession {
     public func send<T: Decodable>(request: JXRequest) -> Observable<T> {
         let builder = JXURLConvertibleBuilder.init(request: request)
         
@@ -93,34 +95,43 @@ class JXSession {
     }
     
     public func cancelRequest(request: JXRequest) {
-        let resultArr = self.requestList.filter({ [weak self] dataRequest in
+        guard let resultRequest = self.selecteRequest(request: request) else {
+            return
+        }
+        
+        resultRequest.cancel()
+        self.requestList.removeAll { [weak self](dataRequest) -> Bool in
             guard let self = self else { return false }
             return request.hashValue == self.getDataRequestKey(dataRequest: dataRequest)
-        })
-        
-        for (_, requestData) in resultArr.enumerated() {
-            requestData.cancel()
-        }
-        self.requestList.removeAll { dataRequest in
-            resultArr.contains(dataRequest)
         }
     }
     
-    public func getRequestState(request: JXRequest) -> Request.State {
-        let result = self.requestList.first {[weak self] dataRequest in
-            guard let self = self else { return false }
-            return request.hashValue == self.getDataRequestKey(dataRequest: dataRequest)
-       }
+    public func resumeRequest(request: JXRequest) {
+        guard let resultRequest = self.selecteRequest(request: request) else {
+            return
+        }
         
-        guard let state = result?.state else {
+        resultRequest.resume()
+    }
+    
+    public func suspendRequest(request: JXRequest) {
+        guard let resultRequest = self.selecteRequest(request: request) else {
+            return
+        }
+        
+        resultRequest.suspend()
+    }
+    
+    public func getRequestState(request: JXRequest) -> Request.State {
+        guard let resultRequest = self.selecteRequest(request: request) else {
             return Request.State.cancelled
         }
-        return state
+        return resultRequest.state
     }
 }
 
+//MARK: Private Method
 extension JXSession {
-    //MARK: Private Method
     private func send<T: Decodable>(_ urlRequest: JXURLConvertibleBuilder, model: T, completion: @escaping(Result<T, Error>) -> Void) -> DataRequest {
         let dataRequest = currentSession.request(urlRequest)
         dataRequest.responseDecodable(of: T.self, queue: callbackQueue) { (result) in
@@ -152,6 +163,15 @@ extension JXSession {
         }
         
         self.requestList.removeAll()
+    }
+    
+    private func selecteRequest(request: JXRequest) -> Request? {
+        let request = self.requestList.first {[weak self] (dataRequest) -> Bool in
+            guard let self = self else { return false}
+            return request.hashValue == self.getDataRequestKey(dataRequest: dataRequest)
+        }
+        
+        return request
     }
     
     private func setDataRequestKey(request: JXRequest, dataRequest: Request) {
