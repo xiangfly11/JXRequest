@@ -20,14 +20,14 @@ class JXSession {
         return configuration
     }
     
-    private var session: Session {
+    private var currentSession: Session {
         let eventMonitors = JXEnviroment.shared.printLog ? [JXLogger.init()] : []
         let session = Session.init(configuration: sessionConfiguration,  requestQueue: callbackQueue, eventMonitors: eventMonitors)
         
         return session
     }
     
-    private var dataRequests: [Request] = [Request]()
+    private var requestList: [Request] = [Request]()
     private var callbackQueue: DispatchQueue {
         return DispatchQueue(label: "com.jx.background", qos: .background)
     }
@@ -93,7 +93,7 @@ class JXSession {
     }
     
     public func cancelRequest(request: JXRequest) {
-        let resultArr = self.dataRequests.filter({ [weak self] dataRequest in
+        let resultArr = self.requestList.filter({ [weak self] dataRequest in
             guard let self = self else { return false }
             return request.hashValue == self.getDataRequestKey(dataRequest: dataRequest)
         })
@@ -101,13 +101,13 @@ class JXSession {
         for (_, requestData) in resultArr.enumerated() {
             requestData.cancel()
         }
-        self.dataRequests.removeAll { dataRequest in
+        self.requestList.removeAll { dataRequest in
             resultArr.contains(dataRequest)
         }
     }
     
     public func getRequestState(request: JXRequest) -> Request.State {
-        let result = self.dataRequests.first {[weak self] dataRequest in
+        let result = self.requestList.first {[weak self] dataRequest in
             guard let self = self else { return false }
             return request.hashValue == self.getDataRequestKey(dataRequest: dataRequest)
        }
@@ -122,7 +122,7 @@ class JXSession {
 extension JXSession {
     //MARK: Private Method
     private func send<T: Decodable>(_ urlRequest: JXURLConvertibleBuilder, model: T, completion: @escaping(Result<T, Error>) -> Void) -> DataRequest {
-        let dataRequest = session.request(urlRequest)
+        let dataRequest = currentSession.request(urlRequest)
         dataRequest.responseDecodable(of: T.self, queue: callbackQueue) { (result) in
             if let value = result.value {
                 completion(Result.success(value))
@@ -134,24 +134,24 @@ extension JXSession {
     }
     
     private func downlod(_ urlRequest: JXURLConvertibleBuilder, progressHandler: @escaping(Progress) -> Void) -> DownloadRequest {
-        let downloadRequest = session.download(urlRequest)
+        let downloadRequest = currentSession.download(urlRequest)
         downloadRequest.downloadProgress { progress in
             progressHandler(progress)
         }
-        self.dataRequests.append(downloadRequest)
+        self.requestList.append(downloadRequest)
         return downloadRequest
     }
     
     private func cancelAllRequests(completion: @escaping() -> Void) {
-        self.dataRequests.forEach { (request) in
+        self.requestList.forEach { (request) in
             request.cancel()
         }
         
-        for request in self.dataRequests {
+        for request in self.requestList {
             request.cancel()
         }
         
-        self.dataRequests.removeAll()
+        self.requestList.removeAll()
     }
     
     private func setDataRequestKey(request: JXRequest, dataRequest: Request) {
