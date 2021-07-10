@@ -143,24 +143,15 @@ extension JXSession {
     }
     
     private func cancelAllRequests(completion: @escaping() -> Void) {
-        AF.cancelAllRequests {[weak self] in
-            guard let self = self else { return }
-            self.dataRequests.removeAll()
-            completion()
+        self.dataRequests.forEach { (request) in
+            request.cancel()
         }
-    }
-    
-    private func getAllRequest(completion: @escaping([URLSessionTask]) -> Void) {
-        AF.session.getAllTasks { tasks in
-            completion(tasks)
+        
+        for request in self.dataRequests {
+            request.cancel()
         }
-    }
-    
-    private func currentAllRequest(completion: @escaping([URLSessionTask]) -> Void) {
-        AF.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
-            let tasks = dataTasks + uploadTasks + downloadTasks
-            completion(tasks)
-        }
+        
+        self.dataRequests.removeAll()
     }
     
     private func setDataRequestKey(request: JXRequest, dataRequest: Request) {
